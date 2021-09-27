@@ -1,0 +1,17 @@
+
+
+.coins__container{
+    display: flex;flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+     margin:20vw 2vw 0 2vw;
+     padding:0;
+    
+    
+}
+
+
+.coin__img{
+    height:3rem;
+    width: 3rem;
+}
