@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react'
-import CoinProps from './CoinProps'
-import { StateContext } from '../contex/GlobalState'
-import './Coin.css'
+import React, { useContext, useState } from 'react';
+import CoinProps from './CoinProps';
+import { StateContext } from '../../context/GlobalState';
+import './Coin.css';
+import { Link } from 'react-router-dom';
 
 function Coins () {
   const [search, setSearch] = useState('')
@@ -17,6 +18,7 @@ function Coins () {
   const handleChange = e => {
     setSearch(e.target.value)
   }
+
   return (
     <div className='coin-app'>
       <div className='coin-search'>
@@ -32,17 +34,22 @@ function Coins () {
       </div>
       {filteredCoins.map(coin => {
         return (
-          <CoinProps
-            key={coin.id}
-            image={coin.image}
-            name={coin.name}
-            current_price={coin.current_price}
-            symbol={coin.symbol}
-          />
+          <>
+            <CoinProps
+              key={coin.id}
+              image={coin.image}
+              name={coin.name}
+              current_price={coin.current_price}
+              symbol={coin.symbol}
+            />
+           <Link to={`/coin/${coin.id}`}>
+              <button className='view-detail-btn'>View Details</button>
+            </Link>
+          </>
         )
       })}
     </div>
   )
 }
 
-export default Coins;
+export default Coins
