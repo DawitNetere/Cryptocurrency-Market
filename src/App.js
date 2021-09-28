@@ -15,7 +15,7 @@ function App () {
         <Navbar />
         <Switch>
           <Route path='/' exact component={Coins} />
-          <Route path="/product/:productId">
+           <Route path="/coin/:coinId">
             <CoinDetails />
           </Route>
           <Route path='/services' component={Services} />
