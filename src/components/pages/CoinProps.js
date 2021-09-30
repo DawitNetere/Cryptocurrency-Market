@@ -38,7 +38,11 @@ const CoinProps = ({
           <p className='coin-symbol'>{symbol}</p>
         </div>
         <div className='coin-data'>
-          <p className='coin-price'>${current_price}</p>
+          {price_change_24h < 0 ? (
+            <p className='coin-percent red'>{price_change_24h.toFixed(2)}%</p>
+          ) : (
+            <p className='coin-percent green'>{price_change_24h.toFixed(2)}%</p>
+          )}
           
          
         </div>

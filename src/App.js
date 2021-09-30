@@ -12,7 +12,7 @@ function App () {
   return (
     <>
       <Router>
-        <Navbar />
+      <Navbar /> 
         <Switch>
           <Route path='/' exact component={Coins} />
            <Route path="/coin/:coinId">

@@ -1,3 +1,25 @@
-section{
-    background-color: coral;
+.container__header {
+  display: flex;
+  justify-content: center;
+   position: sticky;
+  top: 0;
+}
+
+.coin__details--header {
+  width: max-content;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+li {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  margin-right: 2vw;
+}
+
+.coin-detail-image {
+  width: 3vh;
+  margin-right: 2vw;
 }

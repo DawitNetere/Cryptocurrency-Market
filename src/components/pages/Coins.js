@@ -41,6 +41,7 @@ function Coins () {
               name={coin.name}
               current_price={coin.current_price}
               symbol={coin.symbol}
+             price_change_24h={coin.price_change_percentage_24h}
             />
            <Link to={`/coin/${coin.id}`}>
               <button className='view-detail-btn'>View Details</button>
