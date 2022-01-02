@@ -1,5 +1,5 @@
 import React from 'react'
-import './CoinProps.css'
+
 
 const CoinProps = ({
   id,

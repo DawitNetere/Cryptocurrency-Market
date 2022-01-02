@@ -6,7 +6,7 @@ import Services from './components/pages/Services';
 import Products from './components/pages/Products';
 import SignUp from './components/pages/SignUp';
 import CoinDetails from './components/pages/CoinDetails';
-import './App.css';
+import './_styles/App.scss';
 
 function App () {
   return (

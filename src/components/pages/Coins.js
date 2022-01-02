@@ -1,10 +1,55 @@
-import React, { useContext, useState } from 'react';
-import CoinProps from './CoinProps';
-import { StateContext } from '../../context/GlobalState';
-import './Coin.css';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react'
 
-function Coins () {
+import { StateContext } from '../../context/GlobalState'
+import '../../_styles/Coin.scss'
+import { Link } from 'react-router-dom'
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Image,
+  Typography,
+  Box,
+  Grid,
+  TextField,
+  Container,
+  Stack,
+  FormControl,
+  Button
+} from '@mui/material'
+
+function Coins ({
+  id,
+  symbol,
+  name,
+  image,
+  current_price,
+  market_cap,
+  market_cap_rank,
+  total_volume,
+  high_24h,
+  low_24h,
+  price_change_24h,
+  price_change_percentage_24h,
+  market_cap_change_24h,
+  market_cap_change_percentage_24h,
+  circulating_supply,
+  total_supply,
+  max_supply,
+  ath,
+  ath_change_percentage,
+  ath_date,
+  atl,
+  atl_change_percentage,
+  atl_date,
+  roi,
+  last_updated,
+  price_change_percentage_1h_in_currency
+}) {
   const [search, setSearch] = useState('')
   const { coins } = useContext(StateContext)
 
@@ -19,20 +64,93 @@ function Coins () {
     setSearch(e.target.value)
   }
 
+  // function createData(name, calories, fat, carbs, protein) {
+  //   return { name, calories, fat, carbs, protein };
+  // }
+
   return (
-    <div className='coin-app'>
-      <div className='coin-search'>
-        <h1 className='coin-text'>Search a currency</h1>
-        <form>
-          <input
-            className='coin-input'
-            type='text'
+    <Container sx={{ width: '80vw', marginTop: '5rem' }}>
+      <Grid align='center' mb={2}>
+        <FormControl  >
+          <Typography className='coin-text'>Search a currency</Typography>
+          <TextField
+            id='outlined-basic'
+            variant='outlined'
             onChange={handleChange}
-            placeholder='Search'
           />
-        </form>
-      </div>
-      {filteredCoins.map(coin => {
+        </FormControl>
+      </Grid>
+
+      <Paper elevation={3} sx={{ overflow: 'hidden' }}>
+        <Table  stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+             
+              <TableCell align='left'>Name</TableCell>
+
+             
+              <TableCell align='left'>Price</TableCell>
+              <TableCell align='left' >24h %</TableCell>
+              <TableCell align='left' >Total Volume</TableCell>
+             
+              <TableCell align='left' >Market Cap</TableCell>
+             
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredCoins.map(row => (
+              <TableRow
+                key={row.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                {' '}
+                {/* <TableCell align='left'>
+                  
+                </TableCell> */}
+                <TableCell component='th' scope='row'   justifyContent="center"  style={{ display: "flex", alignItems: "center" }}>
+                 <img
+                    src={row.image}
+                    alt='alt'
+                    style={{
+                      width: '30px',
+                      maxHeight: '30px'
+                    }}
+                  />
+                  <Typography mx={1} className="coin_name">{row.name}</Typography>
+                  <Typography  className="coin_symbol">{row.symbol}</Typography> 
+                   <Link mx={1} className='link__details' to={`/coin/${row.id}`}>
+                    <Button className="btn-buy__coin" >Buy</Button>
+                  </Link>
+                  
+                  
+                  
+                  
+                </TableCell>
+                {/* <TableCell align='left'>{row.symbol}</TableCell> */}
+                <TableCell align='left' > <Typography className="coin_price" style={{ fontWeight: 900 }}>{row.current_price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</Typography></TableCell>
+                
+                <TableCell align='left'>
+                  {' '}
+                  {row.price_change_24h < 0 ? (
+                    <Typography style={{ color: 'red' }} >
+                      {row.price_change_24h?.toFixed(2)}%
+                    </Typography>
+                  ) : (
+                    <Typography style={{ color: 'green' }}>
+                      {row.price_change_24h?.toFixed(2)}%
+                    </Typography>
+                  )}
+                </TableCell>
+                <TableCell align='left'> {row.market_cap}</TableCell>
+                <TableCell align='left'> {row.total_volume}</TableCell>
+
+                </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
+
+      {/* {filteredCoins.map(coin => {
         return (
           <>
             <CoinProps
@@ -48,8 +166,8 @@ function Coins () {
             </Link>
           </>
         )
-      })}
-    </div>
+      })} */}
+    </Container>
   )
 }
 

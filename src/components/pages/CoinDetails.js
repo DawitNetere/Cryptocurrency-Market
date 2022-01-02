@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { StateContext } from '../../context/GlobalState'
-import { useParams } from 'react-router-dom';
-import "./CoinDetails.css";
+import { Link, useParams } from 'react-router-dom';
+import "../../_styles/CoinDetails.scss";
 import CoinProps from './CoinProps';
 
 function CoinDetails() {
@@ -26,6 +26,9 @@ function CoinDetails() {
             /></ul>
           )
         })}
+         <Link to='/'>
+                    <button className='view-detail-btn'>beck</button>
+                  </Link>
       </header>
     </div>
   )
