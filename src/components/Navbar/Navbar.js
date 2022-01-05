@@ -2,8 +2,12 @@ import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 import "../../_styles/Navbar.scss";
-import { FaBars, FaTimes, FaAtlassian } from "react-icons/fa";
-import { IconContext } from "react-icons";
+
+
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
+import CircleIcon from '@mui/icons-material/Circle';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -16,18 +20,16 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <IconContext.Provider value={{ className: "global-class-name" }}>
-              <FaAtlassian />
-            </IconContext.Provider>
+           
+              <CircleIcon />
+         
           </Link>
 
-          <IconContext.Provider
-            value={{ style: { className: "global-class-name" } }}
-          >
+         
             <div className="menu-icon" onClick={handleClick}>
-              {click ? <FaTimes /> : <FaBars />}
+              {click ? <CloseIcon /> : <MenuIcon />}
             </div>
-          </IconContext.Provider>
+       
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>

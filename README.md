@@ -5,4 +5,5 @@ Tasks:
 4. add follow button 
 5. add user login/signup & save follow list
 6. back btn from details view
+7. in detail view add dates-last 7 days
  
